@@ -1,0 +1,166 @@
+---
+title: "R Handbook"
+output: html_notebook
+---
+
+# Packages
+```{r}
+library(utils)
+library(stats)
+```
+
+# Visualisation
+
+```{r}
+summary(dataset1)
+GGally::ggpairs(dataset1[c(1,3,4,5)])
+```
+
+
+# Regression
+
+``anova(model1,model2)`` for anova selection.
+
+```{r}
+library(MASS)
+
+# Backward selection
+backward_model <- MASS::stepAIC( lm(Prob~., data = dataset1) )
+
+# Forward selection
+MASS::stepAIC( lm(Prob~1, data = dataset1), 
+               direction = "forward", 
+               scope=list(
+                upper=lm(Prob~., data = dataset1), 
+                lower=lm(Prob~1, data = dataset1)) 
+)
+```
+
+
+
+# EDA Methods
+
+```{r}
+# Read in the datasets
+data <- read.csv("./dataset.csv")
+
+# Train-test split
+X_train <- df[1:7311,]
+Y_train <- y[1:7311]
+X_test <- df[7312:8124,]
+Y_test <- y[7312:8124]
+
+```
+
+# Models
+
+# Classifiers
+### Support Vector Machine 2 Class Classification
+
+```{r}
+library(e1071)
+set.seed(2)
+
+# Modelling step
+model_svm <- svm(Y_train ~ odor, data = X_train) 
+summary(model.1.0)
+
+# Table of training scores
+table(predict(model_svm, X_train), Y_train)
+
+# Table of test scores
+prediction_svm <- predict(model_svm, X_test)
+table(prediction_svm, Y_test)
+
+# Validation Step
+library(pROC)
+plot(roc(Y_test, as.numeric(prediction_svm=="p"), direction="<" ), print.auc=TRUE, col = 'red', lwd = 3)
+```
+
+### Random forest
+
+```{r}
+# Random Forest model
+
+set.seed(2)
+library(randomForest)
+model_rf <- randomForest(Y_train ~ ., data = X_train, importance = TRUE) # Including every variable
+model_rf
+
+# Prediction on test set
+# No need for cross-validation - out of the bag
+prediction_rf <- predict(model_rf, X_test)
+table(prediction_rf, Y_test)
+result <- prediction_rf==Y_test
+
+# Summary plots
+importance(model_rf)    
+varImpPlot(model_rf, main = "Random Forests Classifier")
+
+# ROC AUC 
+plot(roc(Y_test, as.numeric(prediction_rf=="p"), direction="<" ), print.auc=TRUE, col = 'red', lwd = 3)
+
+```
+
+### Linear Discriminant Analysis Classifier
+
+```{r}
+library(MASS)
+# Training
+model_lda <- lda(Y_train ~ .,data=X_train)
+table(predict(model_lda, X_train)$class, Y_train)
+
+#Test
+prediction_lda <- predict(model_lda, X_test)$class
+table(prediction_lda, Y_test)
+
+# Validation
+plot(roc(Y_test, as.numeric(prediction_lda=="p"), direction="<" ), print.auc=TRUE, col = 'red', lwd = 3)
+
+```
+
+
+### Boosting
+
+**XGBoost**
+
+You can also customise XGBoost models very easily. Simply change the `objective`.
+```{r}
+library(xgboost)
+library(Matrix)
+
+# Load data
+# XGboost requires a special data structure
+d_train <- sparse.model.matrix(class ~ ., data=data[1:7311,])[,-1]
+d_test <- sparse.model.matrix(class~ ., data=data[7312:8124,])[,-1]
+
+# Build XGboost classifier
+set.seed(4)
+model_xgboost <- xgboost(data = d_train, label = as.numeric(Y_train == "e"), max.depth = 2, eta = 1, nthread = 2, nrounds = 2, objective = "binary:logistic")
+
+# Importance plots
+importance_xgboost <- xgb.importance(feature_names = colnames(d_train), model = model_xgboost)
+head(importance_xgboost)
+xgb.plot.importance(importance_matrix = importance_xgboost)
+
+# Prediction
+prediction_xgboost <- as.numeric( predict(model_xgboost, d_test) > 0.5)
+head(prediction_xgboost)
+
+Y_test.numeric <- as.numeric(Y_test == "e")
+table(prediction.4, Y_test)
+
+# ROC AUC 
+plot(roc(Y_test.numeric, prediction_xgboost), print.auc=TRUE, col = 'red', lwd = 3)
+
+```
+
+
+
+
+
+
+
+
+
+
