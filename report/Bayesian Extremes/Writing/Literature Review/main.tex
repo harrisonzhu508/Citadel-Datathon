@@ -112,10 +112,8 @@
   \end{array} } \right)\\
 }
 
-\title{Literature Review: Extreme Value Statistics of Crops}
-\author{Harrison Zhu\\ \smallskip
-Department of Mathematics\\ 
-Imperial College London \\
+\title{Citadel UK Datathon:}
+\author{H\\ \smallskip
 }
 \begin{document}
 \maketitle
@@ -125,111 +123,6 @@ Recently, the study of spatial extremes has been an active research area \cite{T
 \end{abstract}
 \tableofcontents
 \section{Extreme value theory and max-stable processes}
-The study of risks, rares and extremes has been very extensive thanks to the works of Davison et al. \cite{Davison2015}. Both the probabilistic and statistical aspects have been advanced by particular works \cite{Haan1984} \cite{Davison2012} \cite{Davison2012a}. The theory of extreme value statistics focuses on 2 important distributions: the generalised extreme value distribution (GEV) and the generalised Pareto distribution (GPD), derived from the extreme type theorems.
-\begin{definition}[Extreme models]
-The generalised extreme value distribution (GEV) \cite{Davison2015} is
-\[
-G(z):= 
-\begin{cases} \exp{\{-[1 + \xi(z-\mu)/\sigma]_{+}^{-1/\xi} \}}, & \mbox{if } \xi\neq 0 \mbox{ ,} \\ \exp{\{-\exp{[-(z-\mu)/\sigma]}] \}}, & \mbox{if } \xi=0,
-\end{cases}
-\]
-where $a_{+} = \max{(a,0)}$ and $\mu, \sigma>0$ are location and scale parameters, and the shape parameter $\xi$, determining the weight of the upper tail of the density.
-\\ \\
-The generalised Pareto distribution (GPD) is defined as for $x>0$
-\[
-H(x):= 
-\begin{cases} 1-(1 + \xi x/\sigma)_{+}^{-1/\xi}, & \mbox{if } \xi\neq 0 \mbox{ ,} \\ 1 - \exp{(-x/\sigma)}, & \mbox{if } \xi=0.
-\end{cases}
-\]
 
-\end{definition}
-The GEV is a natural distribution for maxima modelling and the GPD for exceedances over high thresholds. \\ \\
-A lot of the discussion of threshold exceedances and Bayesian extremes have been on max-stable processes.
-\begin{definition}[Max-stable condition]
-A distribution $G$ is said to be \textbf{max-stable} if
-\[
-G^{t}(x) = G(b_{t} + a_{t}x), \mbox{ } t>0,
-\]
-for some functions $a_{t}>0$ and $b_{t}$.
-\end{definition}
-It can be easily shown that a distribution $G$ is max-stable iff $G$ is the GEV. Similarly, the GPD is \textbf{threshold-stable}:
-\[
-1 - H(x/\sigma_{u}) = \frac{1 - H(x+u)}{1-H(u)}, \mbox{  }0<u<u+x<x_{H},
-\]
-where $x_{H}$ is the upper support point of the density of H. 
-\section{Spatio-temporal and Bayesian extremes}
-In the spatial setting, we will be interested in max-stable processes. However, other methods such as Pareto processes can also be considered \cite{Ferreira2014} 
-\cite{Thibaud2015EfficientProcesses}. \\ \\
-The advantages for using Bayesian modelling are mentioned by \cite{Coles2005}:
-\begin{itemize}
-    \item Algebra for the management of uncertainties. Probabilistic representations for return level estimates that account for model estimation.
-    \item Modular construction of complex models that would otherwise be intractable for inference.
-    \item Spatial models improvements.
-    \item Careful elicitation of prior expert information, leading to improved estimates of extremal behaviour.
-\end{itemize}
-
-
-\section{Model fitting}
-Markov chain Monte Carlo and other stochastic computation algorithms allows for Bayesian computation of extreme value problems. Popular methods include Metropolis-Hastings and Gibbs sampler. Other methods can also be used, such as the Laplace approximation and the Gaussian variation approximation (GVA).
-\subsection{Markov chain Monte Carlo on Riemannian manifolds}
-
-\section{Model Diagnostics}
-
-\section{Development proposal}
-There is strong evidence that extremely high temperatures play a great role in the yield and quality of many crops, according to the paper \cite{Reich2012}. It is also stated that there are 3 features to this problem of heat-induced crop failure:
-\begin{enumerate}
-    \item Events of tail of distribution inherently requires the theory of extremes.
-    \item Catastrophic crop failure is a spatial problem. Therefore the need for spatial dependence.
-    \item Bayesian solution of risk analysis. The author conducts this via a hierarchical model.
-\end{enumerate}
-Particular crops that may be of interest could be corn, soybeans and cotton. This paper is the first paper that considers extreme value theory to agriculture using the theory of spatial max-stable processes developed by Davison et al. \cite{Davison2012}. Some research questions posed by the author includes
-\begin{enumerate}
-    \item Given $p$ and $T$, what is the probability that the fraction $p$ of agricultural land will experience a temperature greater than $T$.
-    \item Is this probability changing over time?
-\end{enumerate}
-To address these issues, the theory of Hierarchichal kernel extreme value processes (HKEVP) is developed, extending from Gaussian extreme value processes (GEVP). These processes are inherently better than GEVP \cite{Davison2013}. Although these methods prevent us from using the maximum likelihood and Bayesian estimation, there has been attempts with composite likelihood \cite{Shaby2012} \cite{Padoan2010}. HKEVP allows us to use Markov chain Monte Carlo methods, relying on a random effects representation and on large but finite number of Gaussian densities. Finally, the author suggests using heat input measured using degree-days, taking in account of time of exposure (there is some suggestion that deleterious effects of extreme temperatures are cumulative). \\ \\
-It is proposed by Davison and Huser \cite{Davison2015} in a review paper that the some of the frontiers of extremes include
-\begin{enumerate}
-    \item Bayesian extremal processes.
-    \item Modelling and inference for extremes observed at many locations.
-    \item Modelling of temporal non-stationarity resulting from factors such as seasonality and climate change
-\end{enumerate}
-
-
-\section{Software}
-Our main scientific languages will be Python and R. In particular, we have \href{https://blog.rstudio.com/2018/03/26/reticulate-r-interface-to-python/}{reticulate}, which provides a comfortable Python interface in R and \verb+rpy2+ in Python to run R code. Below are tables illustrating the statistical libraries that we will use.
-\begin{table}[H]
-\centering
-\begin{tabular}{rr}
-  \hline
-Python Library & Use  \\ 
- \hline
-\verb+PyTorch+ & Auto-differentiation  \\ 
-\verb+PyMC3+ & Markov Chain Monte Carlo \\ 
-\verb+pandas, numpy, scipy, sklearn+ & Scientific computing and statistics \\ 
-\verb+pystan+ &  HMC\\ 
-   \hline
-\end{tabular}
-\caption{List of libraries in Python.} 
-\label{Table6.1}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{rr}
-  \hline
-R Library & Use  \\ 
- \hline
-\verb+PyTorch+ & Auto-differentiation  \\ 
-   \hline
-\end{tabular}
-\caption{List of libraries in Python.} 
-\label{Table6.2}
-\end{table}
-
-
-\newpage
-\bibliography{Mendeley}
-\bibliographystyle{ieeetr}
 
 \end{document}
