@@ -13,7 +13,6 @@ with open('new.csv', 'r') as f:
     reader = csv.reader(f)
     i = 0
     for row in reader:
-        new_row = []
         county_name = row[3]
         state = row[6]
         fips = row[10]
@@ -21,9 +20,7 @@ with open('new.csv', 'r') as f:
         pop_served = row[5]
         severity = row[12]
         compound = row[1]
-        if state in states_to_examine:
-            pass
-        elif compound == compound_to_examine:
+        if compound == compound_to_examine and state in states_to_examine:
             if year in data.keys():
                 data_for_yr = data[year]
             else:
