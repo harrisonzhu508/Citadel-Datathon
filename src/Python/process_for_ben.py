@@ -2,7 +2,7 @@ import csv
 
 counties_data = {'county_name' : {'year': [['other_stuff']]}}
 states_to_examine = ['California', 'Connecticut', 'Florida']
-compound_to_examine = 'Arsenic'
+compound_to_examine = 'Nitrates'
 
 with open('chemicals.csv', 'r', encoding='utf-8') as f:
     next(f)
@@ -41,7 +41,7 @@ with open('earnings.csv', 'r', encoding='utf-8', errors='ignore') as f:
             if year in counties_data[county].keys():
                 new_row_a = counties_data[county][year]
                 for new_row in new_row_a:
-                    new_row.append(row[3:-1])
+                    new_row = new_row + row[3:-1]
                     new_rows.append(new_row)
 
 with open('chemicals.csv', 'r', encoding='utf-8') as f:
