@@ -28,7 +28,7 @@ with open('states_party_strength_cleaned.csv', 'r', encoding="utf-8") as f:
 print(governor_at_year['1999'])
 new_rows = [['year', 'county', 'state', 'contamination_proportion', 'party']]
 
-with open('county.csv', 'r') as f:
+with open('arsenic.csv', 'r') as f:
     next(f)
     reader = csv.reader(f)
     i = 0
