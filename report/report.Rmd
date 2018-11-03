@@ -19,13 +19,24 @@ We investigate
 
 Let $C = \{0,1\}$ be the states of contamination, where 1 in particular denotes over than mean levels of contamination, and 0 otherwise. We first identify which states are most polluted. Let $M_{county,state}$ be the number of people in a selected county and state, exposed to level 1 of contamination (above mean), and let $N_{count,state}$ be the total number of population exposed to different states of contamination. The below geomap illustrates the population exposed to above mean levels of water contamination from years 1999 - 2016.
 
+We learn that:
+
+- California is getting cleaner and cleaner. 
+
+- Bernalillo is a particularly "polluted" county.
+
+- With California, we have a richer dataset over time.
+
+- In California, there are significant changes in years 2001 and 2004.
 
 Since the above geomap is not weighted, it is more insightful to consider the ratio
 
 $$
 R_{county} = \frac{M_{county}}{N_{county}} , \mbox{ and } R_{state} = \frac{M_{county, \cdot}}{N_{county, \cdot}},
 $$
-where the notation $\cdot$ subscript describes $M_{state, \cdot} = \sum_{state} M_{county, state}$.
+where the notation $\cdot$ subscript describes $M_{state, \cdot} = \sum_{state} M_{county, state}$. It gives us a more precise information about whether the proportion of people exposed to contaminated water is greater and how it evolves.
+
+With this we plot the below geomap with the $R_{i}$ values for the states. We observe the evolution of the ratio for each state and see that there is a particular spike in year 2001 in Conneticut. In addition, the ratio is also decreasing as we approach 2016.
 
 ### 1.2 Exposed to types of chemicals
 
