@@ -2,6 +2,7 @@
 title: 'Citadel Datathon Team 11: An exploration of the effects of human activity
   on water pollution'
 output:
+  pdf_document: default
   html_document:
     df_print: paged
 ---
@@ -9,6 +10,8 @@ output:
 # Citadel Datathon Team 11: An exploration of the effects of human activity on water pollution
 
 **Summary**
+
+We investigate
 
 ## 1. Exploratory Data analysis
 
@@ -20,11 +23,17 @@ Let $C = \{0,1\}$ be the states of contamination, where 1 in particular denotes 
 Since the above geomap is not weighted, it is more insightful to consider the ratio
 
 $$
-R_{country} = \frac{M_{county}}{N_{county}} , \mbox{ and } R_{state} = \frac{M_{county, \cdot}}{N_{county, \cdot}},
+R_{county} = \frac{M_{county}}{N_{county}} , \mbox{ and } R_{state} = \frac{M_{county, \cdot}}{N_{county, \cdot}},
 $$
 where the notation $\cdot$ subscript describes $M_{state, \cdot} = \sum_{state} M_{county, state}$.
 
 ### 1.2 Exposed to types of chemicals
+
+Once we identify our most polluted states the natural questions concern the type of pollution and the sources. Here we generate 3 graphs that demonstrate considerable distribution variation across our polluted states, in this case Florida, California and Connecticut.
+
+Forest fires release large amounts of arsenic into the environment, which may explain the high levels in California. Connecticut’s population also experiences high levels of above mean exposure in their population of arsenic. Interestingly, Florida exhibits contrasting levels, with low levels of abnormally high arsenic and uranium, and high levels of Halo-Acetic acid and trihalomethane. 
+
+[Figure]("./img/Pollutant_Levels_3State.png")
 
 
 ### 1.3 Exposure to industry 

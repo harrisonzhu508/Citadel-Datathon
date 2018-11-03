@@ -175,10 +175,10 @@ $(document).ready(function () {
 </div>
 
 
-<!-- rnb-text-begin -->
 <div id="citadel-datathon-team-11-an-exploration-of-the-effects-of-human-activity-on-water-pollution" class="section level1">
 <h1>Citadel Datathon Team 11: An exploration of the effects of human activity on water pollution</h1>
 <p><strong>Summary</strong></p>
+<p>We investigate</p>
 <div id="exploratory-data-analysis" class="section level2">
 <h2>1. Exploratory Data analysis</h2>
 <div id="exposure-to-pollution" class="section level3">
@@ -186,11 +186,14 @@ $(document).ready(function () {
 <p>Let <span class="math inline">\(C = \{0,1\}\)</span> be the states of contamination, where 1 in particular denotes over than mean levels of contamination, and 0 otherwise. We first identify which states are most polluted. Let <span class="math inline">\(M_{county,state}\)</span> be the number of people in a selected county and state, exposed to level 1 of contamination (above mean), and let <span class="math inline">\(N_{count,state}\)</span> be the total number of population exposed to different states of contamination. The below geomap illustrates the population exposed to above mean levels of water contamination from years 1999 - 2016.</p>
 <p>Since the above geomap is not weighted, it is more insightful to consider the ratio</p>
 <p><span class="math display">\[
-R_{country} = \frac{M_{county}}{N_{county}} , \mbox{ and } R_{state} = \frac{M_{county, \cdot}}{N_{county, \cdot}},
+R_{county} = \frac{M_{county}}{N_{county}} , \mbox{ and } R_{state} = \frac{M_{county, \cdot}}{N_{county, \cdot}},
 \]</span> where the notation <span class="math inline">\(\cdot\)</span> subscript describes <span class="math inline">\(M_{state, \cdot} = \sum_{state} M_{county, state}\)</span>.</p>
 </div>
 <div id="exposed-to-types-of-chemicals" class="section level3">
 <h3>1.2 Exposed to types of chemicals</h3>
+<p>Once we identify our most polluted states the natural questions concern the type of pollution and the sources. Here we generate 3 graphs that demonstrate considerable distribution variation across our polluted states, in this case Florida, California and Connecticut.</p>
+<p>Forest fires release large amounts of arsenic into the environment, which may explain the high levels in California. Connecticut’s population also experiences high levels of above mean exposure in their population of arsenic. Interestingly, Florida exhibits contrasting levels, with low levels of abnormally high arsenic and uranium, and high levels of Halo-Acetic acid and trihalomethane.</p>
+<p><a href="%22./img/Pollutant_Levels_3State.png%22">Figure</a></p>
 </div>
 <div id="exposure-to-industry" class="section level3">
 <h3>1.3 Exposure to industry</h3>
@@ -204,11 +207,10 @@ R_{country} = \frac{M_{county}}{N_{county}} , \mbox{ and } R_{state} = \frac{M_{
 </div>
 <div id="discussion" class="section level2">
 <h2>4. Discussion</h2>
-<!-- rnb-text-end -->
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAnQ2l0YWRlbCBEYXRhdGhvbiBUZWFtIDExOiBBbiBleHBsb3JhdGlvbiBvZiB0aGUgZWZmZWN0cyBvZiBodW1hbiBhY3Rpdml0eQogIG9uIHdhdGVyIHBvbGx1dGlvbicKb3V0cHV0OgogIGh0bWxfZG9jdW1lbnQ6CiAgICBkZl9wcmludDogcGFnZWQKLS0tCgojIENpdGFkZWwgRGF0YXRob24gVGVhbSAxMTogQW4gZXhwbG9yYXRpb24gb2YgdGhlIGVmZmVjdHMgb2YgaHVtYW4gYWN0aXZpdHkgb24gd2F0ZXIgcG9sbHV0aW9uCgoqKlN1bW1hcnkqKgoKIyMgMS4gRXhwbG9yYXRvcnkgRGF0YSBhbmFseXNpcwoKIyMjIDEuMSBFeHBvc3VyZSB0byBwb2xsdXRpb24KCkxldCAkQyA9IFx7MCwxXH0kIGJlIHRoZSBzdGF0ZXMgb2YgY29udGFtaW5hdGlvbiwgd2hlcmUgMSBpbiBwYXJ0aWN1bGFyIGRlbm90ZXMgb3ZlciB0aGFuIG1lYW4gbGV2ZWxzIG9mIGNvbnRhbWluYXRpb24sIGFuZCAwIG90aGVyd2lzZS4gV2UgZmlyc3QgaWRlbnRpZnkgd2hpY2ggc3RhdGVzIGFyZSBtb3N0IHBvbGx1dGVkLiBMZXQgJE1fe2NvdW50eSxzdGF0ZX0kIGJlIHRoZSBudW1iZXIgb2YgcGVvcGxlIGluIGEgc2VsZWN0ZWQgY291bnR5IGFuZCBzdGF0ZSwgZXhwb3NlZCB0byBsZXZlbCAxIG9mIGNvbnRhbWluYXRpb24gKGFib3ZlIG1lYW4pLCBhbmQgbGV0ICROX3tjb3VudCxzdGF0ZX0kIGJlIHRoZSB0b3RhbCBudW1iZXIgb2YgcG9wdWxhdGlvbiBleHBvc2VkIHRvIGRpZmZlcmVudCBzdGF0ZXMgb2YgY29udGFtaW5hdGlvbi4gVGhlIGJlbG93IGdlb21hcCBpbGx1c3RyYXRlcyB0aGUgcG9wdWxhdGlvbiBleHBvc2VkIHRvIGFib3ZlIG1lYW4gbGV2ZWxzIG9mIHdhdGVyIGNvbnRhbWluYXRpb24gZnJvbSB5ZWFycyAxOTk5IC0gMjAxNi4KCgpTaW5jZSB0aGUgYWJvdmUgZ2VvbWFwIGlzIG5vdCB3ZWlnaHRlZCwgaXQgaXMgbW9yZSBpbnNpZ2h0ZnVsIHRvIGNvbnNpZGVyIHRoZSByYXRpbwoKJCQKUl97Y291bnRyeX0gPSBcZnJhY3tNX3tjb3VudHl9fXtOX3tjb3VudHl9fSAsIFxtYm94eyBhbmQgfSBSX3tzdGF0ZX0gPSBcZnJhY3tNX3tjb3VudHksIFxjZG90fX17Tl97Y291bnR5LCBcY2RvdH19LAokJAp3aGVyZSB0aGUgbm90YXRpb24gJFxjZG90JCBzdWJzY3JpcHQgZGVzY3JpYmVzICRNX3tzdGF0ZSwgXGNkb3R9ID0gXHN1bV97c3RhdGV9IE1fe2NvdW50eSwgc3RhdGV9JC4KCiMjIyAxLjIgRXhwb3NlZCB0byB0eXBlcyBvZiBjaGVtaWNhbHMKCgojIyMgMS4zIEV4cG9zdXJlIHRvIGluZHVzdHJ5IAoKCiMjIDIuIE1vZGVsbGluZwoKIyMgMy4gRXhwZXJpbWVudGFsIFJlc3VsdHMKCiMjIDQuIERpc2N1c3Npb24KCgoKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAnQ2l0YWRlbCBEYXRhdGhvbiBUZWFtIDExOiBBbiBleHBsb3JhdGlvbiBvZiB0aGUgZWZmZWN0cyBvZiBodW1hbiBhY3Rpdml0eQogIG9uIHdhdGVyIHBvbGx1dGlvbicKb3V0cHV0OgogIHBkZl9kb2N1bWVudDogZGVmYXVsdAogIGh0bWxfZG9jdW1lbnQ6CiAgICBkZl9wcmludDogcGFnZWQKLS0tCgojIENpdGFkZWwgRGF0YXRob24gVGVhbSAxMTogQW4gZXhwbG9yYXRpb24gb2YgdGhlIGVmZmVjdHMgb2YgaHVtYW4gYWN0aXZpdHkgb24gd2F0ZXIgcG9sbHV0aW9uCgoqKlN1bW1hcnkqKgoKV2UgaW52ZXN0aWdhdGUKCiMjIDEuIEV4cGxvcmF0b3J5IERhdGEgYW5hbHlzaXMKCiMjIyAxLjEgRXhwb3N1cmUgdG8gcG9sbHV0aW9uCgpMZXQgJEMgPSBcezAsMVx9JCBiZSB0aGUgc3RhdGVzIG9mIGNvbnRhbWluYXRpb24sIHdoZXJlIDEgaW4gcGFydGljdWxhciBkZW5vdGVzIG92ZXIgdGhhbiBtZWFuIGxldmVscyBvZiBjb250YW1pbmF0aW9uLCBhbmQgMCBvdGhlcndpc2UuIFdlIGZpcnN0IGlkZW50aWZ5IHdoaWNoIHN0YXRlcyBhcmUgbW9zdCBwb2xsdXRlZC4gTGV0ICRNX3tjb3VudHksc3RhdGV9JCBiZSB0aGUgbnVtYmVyIG9mIHBlb3BsZSBpbiBhIHNlbGVjdGVkIGNvdW50eSBhbmQgc3RhdGUsIGV4cG9zZWQgdG8gbGV2ZWwgMSBvZiBjb250YW1pbmF0aW9uIChhYm92ZSBtZWFuKSwgYW5kIGxldCAkTl97Y291bnQsc3RhdGV9JCBiZSB0aGUgdG90YWwgbnVtYmVyIG9mIHBvcHVsYXRpb24gZXhwb3NlZCB0byBkaWZmZXJlbnQgc3RhdGVzIG9mIGNvbnRhbWluYXRpb24uIFRoZSBiZWxvdyBnZW9tYXAgaWxsdXN0cmF0ZXMgdGhlIHBvcHVsYXRpb24gZXhwb3NlZCB0byBhYm92ZSBtZWFuIGxldmVscyBvZiB3YXRlciBjb250YW1pbmF0aW9uIGZyb20geWVhcnMgMTk5OSAtIDIwMTYuCgoKU2luY2UgdGhlIGFib3ZlIGdlb21hcCBpcyBub3Qgd2VpZ2h0ZWQsIGl0IGlzIG1vcmUgaW5zaWdodGZ1bCB0byBjb25zaWRlciB0aGUgcmF0aW8KCiQkClJfe2NvdW50eX0gPSBcZnJhY3tNX3tjb3VudHl9fXtOX3tjb3VudHl9fSAsIFxtYm94eyBhbmQgfSBSX3tzdGF0ZX0gPSBcZnJhY3tNX3tjb3VudHksIFxjZG90fX17Tl97Y291bnR5LCBcY2RvdH19LAokJAp3aGVyZSB0aGUgbm90YXRpb24gJFxjZG90JCBzdWJzY3JpcHQgZGVzY3JpYmVzICRNX3tzdGF0ZSwgXGNkb3R9ID0gXHN1bV97c3RhdGV9IE1fe2NvdW50eSwgc3RhdGV9JC4KCiMjIyAxLjIgRXhwb3NlZCB0byB0eXBlcyBvZiBjaGVtaWNhbHMKCk9uY2Ugd2UgaWRlbnRpZnkgb3VyIG1vc3QgcG9sbHV0ZWQgc3RhdGVzIHRoZSBuYXR1cmFsIHF1ZXN0aW9ucyBjb25jZXJuIHRoZSB0eXBlIG9mIHBvbGx1dGlvbiBhbmQgdGhlIHNvdXJjZXMuIEhlcmUgd2UgZ2VuZXJhdGUgMyBncmFwaHMgdGhhdCBkZW1vbnN0cmF0ZSBjb25zaWRlcmFibGUgZGlzdHJpYnV0aW9uIHZhcmlhdGlvbiBhY3Jvc3Mgb3VyIHBvbGx1dGVkIHN0YXRlcywgaW4gdGhpcyBjYXNlIEZsb3JpZGEsIENhbGlmb3JuaWEgYW5kIENvbm5lY3RpY3V0LgoKRm9yZXN0IGZpcmVzIHJlbGVhc2UgbGFyZ2UgYW1vdW50cyBvZiBhcnNlbmljIGludG8gdGhlIGVudmlyb25tZW50LCB3aGljaCBtYXkgZXhwbGFpbiB0aGUgaGlnaCBsZXZlbHMgaW4gQ2FsaWZvcm5pYS4gQ29ubmVjdGljdXTigJlzIHBvcHVsYXRpb24gYWxzbyBleHBlcmllbmNlcyBoaWdoIGxldmVscyBvZiBhYm92ZSBtZWFuIGV4cG9zdXJlIGluIHRoZWlyIHBvcHVsYXRpb24gb2YgYXJzZW5pYy4gSW50ZXJlc3RpbmdseSwgRmxvcmlkYSBleGhpYml0cyBjb250cmFzdGluZyBsZXZlbHMsIHdpdGggbG93IGxldmVscyBvZiBhYm5vcm1hbGx5IGhpZ2ggYXJzZW5pYyBhbmQgdXJhbml1bSwgYW5kIGhpZ2ggbGV2ZWxzIG9mIEhhbG8tQWNldGljIGFjaWQgYW5kIHRyaWhhbG9tZXRoYW5lLiAKCltGaWd1cmVdKCIuL2ltZy9Qb2xsdXRhbnRfTGV2ZWxzXzNTdGF0ZS5wbmciKQoKCiMjIyAxLjMgRXhwb3N1cmUgdG8gaW5kdXN0cnkgCgoKIyMgMi4gTW9kZWxsaW5nCgojIyAzLiBFeHBlcmltZW50YWwgUmVzdWx0cwoKIyMgNC4gRGlzY3Vzc2lvbgoKCgoK</div>
 
 
 
