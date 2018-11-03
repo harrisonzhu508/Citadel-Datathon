@@ -1,0 +1,41 @@
+---
+title: 'Citadel Datathon Team 11: An exploration of the effects of human activity
+  on water pollution'
+output:
+  html_document:
+    df_print: paged
+---
+
+# Citadel Datathon Team 11: An exploration of the effects of human activity on water pollution
+
+**Summary**
+
+## 1. Exploratory Data analysis
+
+### 1.1 Exposure to pollution
+
+Let $C = \{0,1\}$ be the states of contamination, where 1 in particular denotes over than mean levels of contamination, and 0 otherwise. We first identify which states are most polluted. Let $M_{county,state}$ be the number of people in a selected county and state, exposed to level 1 of contamination (above mean), and let $N_{count,state}$ be the total number of population exposed to different states of contamination. The below geomap illustrates the population exposed to above mean levels of water contamination from years 1999 - 2016.
+
+
+Since the above geomap is not weighted, it is more insightful to consider the ratio
+
+$$
+R_{country} = \frac{M_{county}}{N_{county}} , \mbox{ and } R_{state} = \frac{M_{county, \cdot}}{N_{county, \cdot}},
+$$
+where the notation $\cdot$ subscript describes $M_{state, \cdot} = \sum_{state} M_{county, state}$.
+
+### 1.2 Exposed to types of chemicals
+
+
+### 1.3 Exposure to industry 
+
+
+## 2. Modelling
+
+## 3. Experimental Results
+
+## 4. Discussion
+
+
+
+
