@@ -47,8 +47,12 @@ Forest fires release large amounts of arsenic into the environment, which may ex
 [Figure]("./img/Pollutant_Levels_3State.png")
 
 
-### 1.3 Exposure to industry 
+### 1.3 Exposure to industry
 
+
+### 1.4 The influence of political parties
+
+Why is it that some locations and years, industry seems to thrive and produce more contaminants for no obvious reason? Politics may be the answer. As the Republican party tends to favour looser regulations and the Democratic party tighter regulations, one would expect that the amount of pollution rises and falls along with the party in control. To investigate this we created a dataset which contained both $R_{county}$ and the party which held power in the state at that time.
 
 ## 2. Modelling
 
