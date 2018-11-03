@@ -14,6 +14,7 @@ library(stats)
 ```{r}
 summary(dataset1)
 GGally::ggpairs(dataset1[c(1,3,4,5)])
+
 ```
 
 
